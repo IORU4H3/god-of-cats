@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" name="site" content="HTML, CSS">
+    <title>CAT CAR</title>
+    <link rel="icon" href="img1.png">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+/*            background-color: #FFB52E;*/
+
+            background-image: url('gif.gif');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        .img2 {
+            animation: spin 4s linear infinite;
+            cursor: pointer;
+        }
+
+        .round-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(2);
+            border-radius: 40%;
+        }
+
+        .center-text {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 36px;
+            font-weight: bold;
+            color: #FFFFFF;
+            display: none;
+            font-family: Source Code Pro Light; 
+            animation: moveUpAndFade 2s linear;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes moveUpAndFade {
+            0% {
+                transform: translate(-50%, -50%) translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) translateY(-1000px);
+                opacity: 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- <img src="gif.gif" class="round-image"> -->
+    <img src="img2 - Copie.png" class="img2" onclick="playSoundAndShowText('flex.mp3', 'MIAOU')">
+    <audio id="audio" controls style="display: none;"></audio>
+
+    <div id="centerText" class="center-text"></div>
+
+    <script>
+        function playSoundAndShowText(soundFile, message) {
+            var audio = document.getElementById('audio');
+            audio.src = soundFile;
+            audio.play();
+
+            var centerText = document.getElementById('centerText');
+            centerText.innerHTML = message;
+            centerText.style.display = 'block';
+
+
+            function hideText() {
+                centerText.style.display = 'none';
+            }
+            setTimeout(hideText, 2000);
+        }
+    </script>
+</body>
+</html>
